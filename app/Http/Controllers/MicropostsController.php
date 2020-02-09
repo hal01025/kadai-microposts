@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class MicropostController extends Controller
+class MicropostsController extends Controller
 {
     public function index()
     {
@@ -26,7 +26,7 @@ class MicropostController extends Controller
     {
         $this->validate($request, ['content' => 'required|max:191',]);
         
-        $request->user()->micropost()->create(['content' => $request->content,]);
+        $request->user()->microposts()->create(['content' => $request->content,]);
         
         return back();
     }
