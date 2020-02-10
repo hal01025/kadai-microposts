@@ -11,8 +11,9 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
+        $favorites = \Auth::user()->favorites()->orderBy('id', 'desc')->paginate(10);
         
-        return view('users.index', ['users' => $users,]);
+        return view('users.index', ['users' => $users, 'favorites' => $favorites]);
     }
     
     public function show($id)
